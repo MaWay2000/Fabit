@@ -15,7 +15,6 @@
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 14px;
-  --content-width: min(1220px, calc(100% - 32px));
 }
 
 *,
@@ -80,9 +79,9 @@ p {
 
 .site-shell {
   position: relative;
-  width: var(--content-width);
-  margin: 0 auto;
-  padding: 20px 0 44px;
+  width: 100%;
+  margin: 0;
+  padding: 20px 24px 44px;
 }
 
 .site-glow,
@@ -128,12 +127,13 @@ p {
   position: sticky;
   top: 16px;
   z-index: 20;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
   margin-bottom: 28px;
-  padding: 14px 18px;
+  width: 100%;
+  padding: 14px 20px;
   border: 1px solid var(--panel-line);
   border-radius: 999px;
   background: rgba(10, 13, 16, 0.72);
@@ -145,6 +145,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 14px;
+  min-width: max-content;
 }
 
 .brand-mark {
@@ -181,9 +182,11 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   gap: 22px;
-  flex: 1 1 auto;
-  flex-wrap: wrap;
+  width: max-content;
+  max-width: 100%;
+  flex-wrap: nowrap;
 }
 
 .site-nav a {
@@ -203,6 +206,7 @@ p {
 main {
   display: grid;
   gap: 36px;
+  width: 100%;
 }
 
 main section {
@@ -227,7 +231,7 @@ main section {
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
   gap: 24px;
   padding: clamp(28px, 5vw, 54px);
   border-radius: var(--radius-xl);
@@ -794,16 +798,26 @@ main section {
 
 @media (max-width: 840px) {
   .site-header {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     border-radius: 28px;
   }
 
+  .brand {
+    width: 100%;
+    justify-content: center;
+  }
+
   .site-nav {
     order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .header-cta {
+    order: 2;
     width: 100%;
   }
 
@@ -819,7 +833,8 @@ main section {
 
 @media (max-width: 640px) {
   .site-shell {
-    width: min(100% - 20px, 100%);
+    width: 100%;
+    padding: 10px 14px 34px;
     padding-top: 10px;
   }
 
